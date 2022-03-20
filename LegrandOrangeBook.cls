@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The Legrand Orange Book
 % LaTeX Class
-% Version 3.0 (January 26, 2022)
+% Version 3.1 (February 18, 2022)
 %
-% Original author:
-% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Authors:
 % Vel (vel@latextemplates.com)
+% Mathias Legrand (legrand.mathias@gmail.com)
 % 
 % This class originates from:
 % https://www.LaTeXTemplates.com
@@ -43,6 +43,8 @@
 \usepackage{changepage} % Required for temporarily indenting text blocks
 
 \usepackage[toc]{appendix} % Required for the appendices chapters
+
+\usepackage{etoolbox} % Required for conditional logic and easily changing commands
 
 %----------------------------------------------------------------------------------------
 %	MARGINS
@@ -450,6 +452,13 @@
 \usepackage{makeidx} % Required to make an index
 
 \makeindex % Tells LaTeX to create the files required for indexing
+
+% Modify the command to output the index to output the correctly styled Index name to the page headers
+\patchcmd{\theindex}
+	{\MakeUppercase\indexname} % Find
+	{\sffamily\normalsize\bfseries\indexname} % Replace
+	{}
+	{}
 
 %----------------------------------------------------------------------------------------
 %	 TABLES
